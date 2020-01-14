@@ -4,3 +4,30 @@
 записывать ее в последнюю ячейку строки.
 В конце следует вывести полученную матрицу.
 """
+
+
+M = 5
+N = 4
+a = []
+LIST1 = []
+LIST2 = []
+print('Необходимо будет ввести матрицу 4 числа в строке и 5 строк.')
+for i in range(M):
+    print('Введите ', i + 1, '-ую строку массива через пробел', sep='')
+    while not LIST1:
+        try:
+            LIST1 = [int(el) for el in input().split(' ')]
+        except BaseException:
+            print(
+                'Вы ввели не верные данные, введите повторно данные для строки номер',
+                i + 1)
+            pass
+
+    LIST1.append(sum(LIST1))
+    LIST2.append(LIST1)
+    LIST1 = []
+
+for i in range(M):
+    for j in range(N + 1):
+        print(LIST2[i][j], ' ', end='')
+    print()
