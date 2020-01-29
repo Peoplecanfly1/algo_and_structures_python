@@ -1,8 +1,27 @@
-"""
-3. Массив размером 2m + 1, где m – натуральное число, заполнен случайным образом.
-Найдите в массиве медиану. Медианой называется элемент ряда, делящий его на
-две равные части: в одной находятся элементы, которые не меньше медианы,
-в другой – не больше медианы. Задачу можно решить без сортировки исходного
-массива. Но если это слишком сложно, то используйте метод сортировки,
- который не рассматривался на уроках
-"""
+import random
+
+m = int(input("Введите m: "))
+massive = [random.randint(1, 100) for j in range(m * 2 + 1)]
+
+
+def parts(array):
+    left = []
+    right = []
+    for i in range(len(array)):
+        for j in range(len(array)):
+            if array[i] > array[j]:
+                left.append(array[j])
+            if array[i] < array[j]:
+                right.append(array[j])
+            if array[i] == array[j] and i > j:
+                left.append(array[j])
+            if array[i] == array[j] and i < j:
+                right.append(array[j])
+        if len(left) == len(right):
+            return array[i]
+        left.clear()
+        right.clear()
+
+
+print(massive)
+print(parts(massive))
